@@ -11,6 +11,7 @@ typedef struct
 
 ArrayList * create_array(size_t initial_capacity);
 void setItems(ArrayList * list, void * data);
+void removeItem(ArrayList * list, size_t element);
 void freeMemory(ArrayList * list);
 
 #endif
