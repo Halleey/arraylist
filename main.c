@@ -10,10 +10,12 @@ int main(int argc, char const *argv[])
     b = 3;
     c = 220;
 
+   
     setItems(list, &a);
     setItems(list, &b);
     setItems(list, &c);
-
+    int * value = (int *)getItem(list, 1);
+    printf("element\n %i \n", *value); 
     removeItem(list, 1);
 
     printf("Itens no ArrayList:\n");
@@ -22,6 +24,6 @@ int main(int argc, char const *argv[])
         printf("Item %zu: %d\n", i, *p);
     }
 
-
+    freeMemory(list);
     return 0;
 }

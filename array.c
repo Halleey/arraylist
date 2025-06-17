@@ -26,6 +26,7 @@ void setItems(ArrayList *list, void *data)
         list->data = newData;
         list->capacity = newCapacity;
     }
+    
     list->data[list->length++] = data;
 }
 
@@ -44,6 +45,32 @@ void removeItem(ArrayList *list, size_t element)
     list->length --;
 }
 
+void *getItem(ArrayList *list, size_t element)
+{
+    if(element >= list->length){
+        fprintf(stderr, "position not was found");
+        return NULL;
+    }
+    return list->data[element];
+}
+
 void freeMemory(ArrayList *list)
 {
+    if (list == NULL) return;
+
+    // Libera os elementos armazenados
+    for (size_t i = 0; i < list->length; i++) {
+        free(list->data[i]);
+    }
+
+    // Agora libera o array interno
+    if (list->data != NULL) {
+        free(list->data);
+        list->data = NULL;
+    }
+
+    list->length = 0;
+    list->capacity = 0;
+
+    free(list);
 }
