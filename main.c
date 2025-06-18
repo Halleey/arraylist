@@ -9,15 +9,19 @@ int main(int argc, char const *argv[])
     a = 10;
     b = 3;
     c = 220;
-
+    
    
     setItems(list, &a);
     setItems(list, &b);
     setItems(list, &c);
-    int * value = (int *)getItem(list, 1);
-    printf("element\n %i \n", *value); 
-    removeItem(list, 1);
+    
+    int * value = (int*)getItem(list, 1);
+    printf("element\n %i\n", *value); 
 
+    removeItem(list, 1);
+    int tamanho = length(list);
+    printf("List length\n %i\n", tamanho);
+    
     printf("Itens no ArrayList:\n");
     for (size_t i = 0; i < list->length; i++) {
         int *p = (int *)list->data[i];

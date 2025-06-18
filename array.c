@@ -54,6 +54,11 @@ void *getItem(ArrayList *list, size_t element)
     return list->data[element];
 }
 
+int length(ArrayList * list){
+    if(list == NULL) return 0;
+    return list->length;
+}
+
 void freeMemory(ArrayList *list)
 {
     if (list == NULL) return;
