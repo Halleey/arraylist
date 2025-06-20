@@ -59,6 +59,18 @@ int length(ArrayList * list){
     return list->length;
 }
 
+int update(ArrayList *list, size_t index, void *element)
+{
+    if(index >= list->length) {
+        fprintf(stderr, "position not was found\n");
+        return 0;  
+    }
+
+    list->data[index] = element;
+    return 1; 
+}
+
+
 void freeMemory(ArrayList *list)
 {
     if (list == NULL) return;

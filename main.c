@@ -9,14 +9,14 @@ int main(int argc, char const *argv[])
     a = 10;
     b = 3;
     c = 220;
-    
+    int teste = 15;
    
     setItems(list, &a);
     setItems(list, &b);
     setItems(list, &c);
-    
-    int * value = (int*)getItem(list, 1);
-    printf("element\n %i\n", *value); 
+    update(list, 0, &teste);
+    int * value = (int*)getItem(list, 0);
+    printf("\nelement\n %i\n", *value); 
 
     removeItem(list, 1);
     int tamanho = length(list);
