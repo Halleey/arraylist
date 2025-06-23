@@ -1,32 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "array.h"
-int main(int argc, char const *argv[])
-{
-    
-    ArrayList * list = create_array(2);
-    int a,b,c;
-    a = 10;
-    b = 3;
-    c = 220;
-    int teste = 15;
-   
+
+int main() {
+    ArrayList *list = create_array(5);
+
+    int a = 42;
+    int b = 100;
     setItems(list, &a);
     setItems(list, &b);
-    setItems(list, &c);
-    update(list, 0, &teste);
-    int * value = (int*)getItem(list, 0);
-    printf("\nelement\n %i\n", *value); 
 
-    removeItem(list, 1);
-    int tamanho = length(list);
-    printf("List length\n %i\n", tamanho);
     
+    char *str1 = strdup("Ola Mundo!"); 
+    setItems(list, str1);              
+
+    
+    float pi = 3.14f;
+    setItems(list, &pi);
+    
+ 
     printf("Itens no ArrayList:\n");
     for (size_t i = 0; i < list->length; i++) {
-        int *p = (int *)list->data[i];
-        printf("Item %zu: %d\n", i, *p);
+        if (i < 2) { // Primeiros dois são int
+            int *p = (int *)list->data[i];
+            printf("Item %zu (int): %d\n", i, *p);
+        } else if (i == 2) { // Terceiro é string
+            char *p = (char *)list->data[i];
+            printf("Item %zu (string): %s\n", i, p);
+        } else if (i == 3) { // Quarto é float
+            float *p = (float *)list->data[i];
+            printf("Item %zu (float): %.2f\n", i, *p);
+        }
     }
+
+    free(str1); 
 
     freeMemory(list);
     return 0;

@@ -32,18 +32,23 @@ void setItems(ArrayList *list, void *data)
 
 void removeItem(ArrayList *list, size_t element)
 {
-    if(element >= list->length){
-        fprintf(stderr, "position not was found");
+    if (element >= list->length) {
+        fprintf(stderr, "position not was found\n");
         return;
     }
 
-    for (size_t i = element; i < list->length -1; i++) {
-        list->data[i] = list->data[i +1];
-    }
-    
+    void *toFree = list->data[element];  
 
-    list->length --;
+    for (size_t i = element; i < list->length - 1; i++) {
+        list->data[i] = list->data[i + 1];
+    }
+
+    list->length--;
+    list->data[list->length] = NULL;
+
+    free(toFree); 
 }
+
 
 void *getItem(ArrayList *list, size_t element)
 {
